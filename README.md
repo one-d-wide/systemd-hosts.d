@@ -1,2 +1,16 @@
 # systemd-hosts.d
-Keep your hosts records in logically separated files
+## Keep your hosts records in logically separated files
+
+- Service monitors /etc/hosts.d/*.conf files and updates /etc/hosts whether change.
+
+## Instalation
+- **Manual**
+  ```shell
+  mkdir /etc/hosts.d
+  mv /etc/hosts /etc/hosts.d/hosts.conf
+  cp systemd-hosts.d.path systemd-hosts.d.service /etc/systemd/system
+  systemctl enable --now systemd-hosts.d.path
+
+  # Optionally you can store result in ram
+  ln -sf /run/hosts /etc/hosts`
+  systemctl enable --now systemd-hosts.d.service
