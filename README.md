@@ -1,2 +1,2 @@
 # systemd-hosts.d
-Simple unit for updating hosts file from hosts.d directory
+Keep your hosts records in logically separated files

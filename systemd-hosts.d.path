@@ -1,0 +1,8 @@
+[Unit]
+Description=Keep your hosts records in logically separated files
+
+[Path]
+PathModified=/etc/hosts.d
+
+[Install]
+WantedBy=network-pre.target
