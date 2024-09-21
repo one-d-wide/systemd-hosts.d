@@ -40,7 +40,7 @@ Environment="HOSTS_ENABLE_COMMENT=no"
 ExecCondition=/bin/sh -c 'grep -r "$HOSTS_REGEX_BASE" "$HOSTS_DIRECTORY" >/dev/null'
 
 # Create a single backup if changes are detected
-ExecStartPre=/bin/sh -c 'diff -q $HOSTS_FILE ${HOSTS_FILE}~ || cp -av --dereference $HOSTS_FILE ${HOSTS_FILE}~'
+ExecStartPre=/bin/sh -c 'if [ -f "$HOSTS_FILE" ]; then diff -q "$HOSTS_FILE" "${HOSTS_FILE}~" || cp -av --dereference "$HOSTS_FILE" "${HOSTS_FILE}~"; fi'
 
 # Parse conf files and overwrite $HOSTS_FILE #
 # Maintain $HOSTS_FILE header
